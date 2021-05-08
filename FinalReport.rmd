@@ -18,7 +18,75 @@ OldData <-read.csv(file="covid91.csv",header=TRUE)
 FinalData <- OldData %>% mutate(infected = recode(infected, aids = "covid", none = "OK" )) %>% select(-one_of("X"))
 ```
 
+```{r include = FALSE}
+FinalData= select(FinalData, ! is.numeric)
+FinalData=purrr::map(FinalData, as.factor)
+FinalData = data.frame(FinalData)
+```
+
 # Introduction
 
 A new  preventative vaccine (covid91) is under test in clinical trials. Given the nature of this vaccine it is suspected that the drug may exhibit different effectiveness across the variety of subpopulations tracked. Consider population subgroups consisting of Males, Females, just the drug users, and just those in the LGBTQ community. Write a complete report that separately considers this drug for each subgroup and your recommendations as to whether people in the subgroup should take the vaccine. Structure your report in four sections each devoted to one of the four subgroups, use null and alternative hypothesis statements and correct statistical verbage when referencing p-values in conclusions.
+  
+# Males
+  
+```{r}
+males <- subset(FinalData, sex == "guy")
+``` 
+  
+## Introduction
+  
+$H_0$ The covid91 vaccine is effective in males.  
+$H_A$ The covid91 vaccine is not effective in males.  
+  
+## Descriptive Results
+  
+### Graphical Descriptive Results
+  
+```{r}
+barchartGC(~infected + treatment, data=males)
+barchartGC(~infected + treatment, data=males, type="percent")
+```
+  
+The bar chart above shows that, out of all the males in this trial who took the covid91 vaccine, almost 60% got infected with covid and, out of all the males in this trial who took the placebo, over 40% did not get infected with covid. That means the amount of males who took the vaccine and got sick is 3 times as much as those who took the placebo and got sick! We are already starting to see evidence that the covid91 vaccine may not be effective for males. 
+  
+### Numerical Descriptive Results
+  
+```{r}
+table1 <- xtabs(~treatment + infected, data=males)
+table2 <- xtabs(~infected + treatment,data=males)
+rowPerc(table1)
+colPerc(table1)
+```
+  
+The first table above shows that more males who took the covid91 vaccine got infected with covid (3.72) than the males who took the placebo and got infected (2.55). Likewise, the second table above also displays similar proportions; more of the infections came from the vaccinated males (58.16) than from the males who took the placebo (41.84). Once again, it does not look like the covid91 vaccine is a good hope for males. 
+  
+## Inferential Results
+  
+```{r}
+chisq.test(table1)
+chisqtestGC(table1)
+fisher.test(table1)
+fisher.test(table2)
+```
+  
+$H_0$ The covid91 vaccine is effective in males.  
+$H_A$ The covid91 vaccine is not effective in males.  
+  
+The Chi-squared test above displays a p-value of 0.0006181 while Fisher's Exact Test displays a p-value of 0.0005801. Both of these values indicate some sort of significance. They, both representing the chance that we will get the same results just received if the null hypothesis is true, are very small values.
+  
+So, based on these values, we can reject the null hypothesis in favor of the alternative: the covid91 vaccine is not effective in males. 
+  
+## Conclusion
+  
+Because our p-values for the male subgroup are too small to show a significant chance that we will get the same results just received if the null hypothesis is true, we reject it in favor of the alternative: the covid91 vaccine is not effective in males.
+  
+The covid91 is clearly not effective in this subgroup. I would not recommend males to take this vaccine.
+  
 
+
+
+
+
+
+  
