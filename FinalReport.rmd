@@ -244,7 +244,15 @@ So, based on these values, we can reject the null hypothesis in favor of the alt
   
 ## Conclusion
   
-Because our p-values for the male subgroup are too small to show a significant chance that we will get the same results just received if the null hypothesis is true, we reject it in favor of the alternative: the covid91 vaccine is not effective in males.
+Because our p-values for the male subgroup are too small to show a significant chance that we will get the same results just received if the null hypothesis is true, we reject it in favor of the alternative: the covid91 vaccine is not effective in the LGTBQ community.
   
-The covid91 vaccine is clearly not effective in this subgroup. I would not recommend males to take this vaccine.
+The covid91 vaccine is clearly not effective in this subgroup. I would not recommend people who identify as LGBTQ to take this vaccine.
+  
+# Overall Report Conclusion  
+  
+In this report, we used the dplyr function subset to take out the male, female, drug user, and LGBTQ subgroups from our FinalData data set. Then, we considered each subgroup separately, performing a graphical, numerical, and inferential analysis for each one. 
+  
+To conclude, we have found that the covid91 vaccine is not effective in males, is effective in females, is effective in drug users, and is not effective in the LGBTQ community. 
+  
+I would only recommend females and drug users to take the covid91 vaccine. I would not recommend males or the LGBTQ community to take it.
   
