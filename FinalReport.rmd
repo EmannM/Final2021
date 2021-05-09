@@ -48,7 +48,7 @@ barchartGC(~infected + treatment, data=males)
 barchartGC(~infected + treatment, data=males, type="percent")
 ```
   
-The bar chart above shows that, out of all the males in this trial who took the covid91 vaccine, almost 60% got infected with covid and, out of all the males in this trial who took the placebo, over 40% did not get infected with covid. That means the amount of males who took the vaccine and got sick is 3 times as much as those who took the placebo and got sick! We are already starting to see evidence that the covid91 vaccine may not be effective for males. 
+The bar chart above shows that, out of all the males in this trial who took the covid91 vaccine, almost 60% got infected with covid and, out of all the males in this trial who took the placebo, over 40% did not get infected with covid. That means the amount of males who took the vaccine and got sick is 1 and a half times as much as those who took the placebo and got sick! We are already starting to see evidence that the covid91 vaccine may not be effective for males. 
   
 ### Numerical Descriptive Results
   
@@ -81,12 +81,62 @@ So, based on these values, we can reject the null hypothesis in favor of the alt
   
 Because our p-values for the male subgroup are too small to show a significant chance that we will get the same results just received if the null hypothesis is true, we reject it in favor of the alternative: the covid91 vaccine is not effective in males.
   
-The covid91 is clearly not effective in this subgroup. I would not recommend males to take this vaccine.
+The covid91 vaccine is clearly not effective in this subgroup. I would not recommend males to take this vaccine.
   
-
-
-
-
-
-
+# Females
+  
+```{r}
+females <- subset(FinalData, sex == "gal")
+``` 
+  
+## Introduction
+  
+$H_0$ The covid91 vaccine is not effective in females.  
+$H_A$ The covid91 vaccine is effective in females.  
+  
+## Descriptive results
+  
+### Graphical Descriptive Results
+  
+```{r}
+barchartGC(~infected + treatment, data=females)
+barchartGC(~infected + treatment, data=females, type="percent")
+```
+  
+The bar chart above is already showing us proof that the covid91 vaccine is promising for the female subgroup; more than 60% of the females in the study who became infected with the virus took the placebo while almost 40% of the females in the study who became infected with the virus took the vaccine. That means more sick females came from the placebo group than the vaccinated group.
+  
+### Numerical Descriptive Results
+  
+```{r}
+table1 <- xtabs(~treatment + infected, data=females)
+table2 <- xtabs(~infected + treatment,data=females)
+rowPerc(table1)
+colPerc(table1)
+```
+  
+The first table above shows us that, out of all the females involved in the study who got infected with covid, a larger proportion of them took them had taken the placebo (8.67) than the vaccine (4.44). The second table above shows us similar information; less vaccinated females got sick than the female placebo group. Once again, it appears that the covid91 vaccine is effective in females.
+  
+## Inferential Results
+  
+```{r}
+chisq.test(table1)
+chisqtestGC(table1)
+fisher.test(table1)
+fisher.test(table2)
+```  
+  
+$H_0$ The covid91 vaccine is not effective in females.  
+$H_A$ The covid91 vaccine is effective in females.  
+  
+The Chi-squared test above displays a p-value of 0.0000000000000003626 while Fisher's Exact Test displays a p-value that is less than 0.00000000000000022. Both of these values definitely indicate some sort of significance. They, both representing the chance that we will get the same results just received if the null hypothesis is true, are astoundingly small values.  
+  
+These p-values stack up high against the null hypothesis. So, based on these values, we can reject the null hypothesis in favor of the alternative: the covid91 vaccine is effective in females.
+  
+## Conclusion
+  
+Because our p-values for the female subgroup are much too small to show a significant chance that we will get the same results just received if the null hypothesis is true, we reject it in favor of the alternative: the covid91 vaccine is effective in females.
+  
+The covid91 vaccine is clearly effective in this subgroup. I would definitely recommend females to take this vaccine.  
+  
+  
   
