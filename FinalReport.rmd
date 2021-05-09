@@ -138,5 +138,58 @@ Because our p-values for the female subgroup are much too small to show a signif
   
 The covid91 vaccine is clearly effective in this subgroup. I would definitely recommend females to take this vaccine.  
   
+# Drug Users
   
+```{r}
+drugUsers <- subset(FinalData, DrugUser == "yes")
+```   
+  
+## Introduction
+  
+$H_0$ The covid91 vaccine is not effective in drug users.  
+$H_A$ The covid91 vaccine is effective in drug users.  
+  
+## Descriptive results
+  
+### Graphical Descriptive Results
+  
+```{r}
+barchartGC(~infected + treatment, data=drugUsers)
+barchartGC(~infected + treatment, data=drugUsers, type="percent")
+``` 
+  
+The bar chart above shows that, out of all the drug users involved in this study who got infected with covid, almost 70% had taken the placebo and nearly 40% had taken the covid91 vaccine. That means there were 1.75 times as many sick placebo drug users as there were sick vaccinated drug users. If we look at the frist group of two bars in the plot, the right one representing the amount of placebo infections appears to be just a little over twice the size of the left bar representing the vaccine infections! It is beginning to appear that the covid91 vaccine is working well in drug users.
+  
+### Numerical Descriptive Results
+  
+```{r}
+table1 <- xtabs(~treatment + infected, data=drugUsers)
+table2 <- xtabs(~infected + treatment,data=drugUsers)
+rowPerc(table1)
+colPerc(table1)
+```  
+  
+The first table above shows us that the proportion of drug users who took the placebo and got sick (6.46) is twice as much as the proporation of drug users who took the vaccine and got sick (6.46). Likewise, the second table underneath it also shows similar data; the proportion of infected placebo drug users (66.67) outnumbers the proportion of infected drug users who were vaccinated (33.33) by twice as much. Once again, it appears that the covid91 vaccine is doing its job for the drug users. 
+  
+## Inferential Results
+  
+```{r}
+chisq.test(table1)
+chisqtestGC(table1)
+fisher.test(table1)
+fisher.test(table2)
+``` 
+  
+$H_0$ The covid91 vaccine is not effective in drug users.  
+$H_A$ The covid91 vaccine is effective in drug users.  
+  
+The Chi-squared test above displays a p-value of  0.003028 while Fisher's Exact Test displays a p-value of 0.002273. Both of these values indicate some sort of significance. They, both representing the chance that we will get the same results just received if the null hypothesis is true, are small values.
+  
+So, based on these values, we can reject the null hypothesis in favor of the alternative: the covid91 vaccine is effective in drug users.
+  
+## Conclusion
+  
+Because our p-values for the drug user subgroup are too small to show a significant chance that we will get the same results just received if the null hypothesis is true, we reject it in favor of the alternative: the covid91 vaccine is effective in drug users.
+  
+The covid91 vaccine is clearly effective in this subgroup. I would recommend drug users to take this vaccine.  
   
