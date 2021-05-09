@@ -48,7 +48,7 @@ barchartGC(~infected + treatment, data=males)
 barchartGC(~infected + treatment, data=males, type="percent")
 ```
   
-The bar chart above shows that, out of all the males in this trial who took the covid91 vaccine, almost 60% got infected with covid and, out of all the males in this trial who took the placebo, over 40% did not get infected with covid. That means the amount of males who took the vaccine and got sick is 1 and a half times as much as those who took the placebo and got sick! We are already starting to see evidence that the covid91 vaccine may not be effective for males. 
+The bar chart above shows that, out of all the males in this trial who got infected with covid, almost 60% took the vaccine and over 40% took the placebo. That means the amount of males who took the vaccine and got sick is 1 and a half times as much as those who took the placebo and got sick! We are already starting to see evidence that the covid91 vaccine may not be effective for males. 
   
 ### Numerical Descriptive Results
   
@@ -114,7 +114,7 @@ rowPerc(table1)
 colPerc(table1)
 ```
   
-The first table above shows us that, out of all the females involved in the study who got infected with covid, a larger proportion of them took them had taken the placebo (8.67) than the vaccine (4.44). The second table above shows us similar information; less vaccinated females got sick than the female placebo group. Once again, it appears that the covid91 vaccine is effective in females.
+The first table above shows us that, out of all the females involved in the study who got infected with covid, a larger proportion of them had taken the placebo (8.67) than the vaccine (4.44). The second table above shows us similar information; less vaccinated females got sick (33.11) than the female placebo group (66.89). Once again, it appears that the covid91 vaccine is effective in females.
   
 ## Inferential Results
   
@@ -130,7 +130,7 @@ $H_A$ The covid91 vaccine is effective in females.
   
 The Chi-squared test above displays a p-value of 0.0000000000000003626 while Fisher's Exact Test displays a p-value that is less than 0.00000000000000022. Both of these values definitely indicate some sort of significance. They, both representing the chance that we will get the same results just received if the null hypothesis is true, are astoundingly small values.  
   
-These p-values stack up high against the null hypothesis. So, based on these values, we can reject the null hypothesis in favor of the alternative: the covid91 vaccine is effective in females.
+These p-values stack up high against the null hypothesis. So, based on these values, we can reject the null hypothesis in favor of the alternative: the covid91 vaccine is (very!) effective in females.
   
 ## Conclusion
   
@@ -158,7 +158,7 @@ barchartGC(~infected + treatment, data=drugUsers)
 barchartGC(~infected + treatment, data=drugUsers, type="percent")
 ``` 
   
-The bar chart above shows that, out of all the drug users involved in this study who got infected with covid, almost 70% had taken the placebo and nearly 40% had taken the covid91 vaccine. That means there were 1.75 times as many sick placebo drug users as there were sick vaccinated drug users. If we look at the frist group of two bars in the plot, the right one representing the amount of placebo infections appears to be just a little over twice the size of the left bar representing the vaccine infections! It is beginning to appear that the covid91 vaccine is working well in drug users.
+The bar chart above shows that, out of all the drug users involved in this study who got infected with covid, about 65% had taken the placebo and nearly 40% had taken the covid91 vaccine. That means there were about 1.63 times as many sick placebo drug users as there were sick vaccinated drug users. If we look at the first pair of bars in the plot, the right one representing the amount of placebo infections appears to be just a little over twice the size of the left bar representing the vaccine infections! It is beginning to appear that the covid91 vaccine is working well in drug users.
   
 ### Numerical Descriptive Results
   
@@ -169,7 +169,7 @@ rowPerc(table1)
 colPerc(table1)
 ```  
   
-The first table above shows us that the proportion of drug users who took the placebo and got sick (6.46) is twice as much as the proporation of drug users who took the vaccine and got sick (6.46). Likewise, the second table underneath it also shows similar data; the proportion of infected placebo drug users (66.67) outnumbers the proportion of infected drug users who were vaccinated (33.33) by twice as much. Once again, it appears that the covid91 vaccine is doing its job for the drug users. 
+The first table above shows us that the proportion of drug users who took the placebo and got sick (6.46) is twice as much as the proporation of drug users who took the vaccine and got sick (3.63). Likewise, the second table underneath it also shows similar data; the proportion of infected placebo drug users (66.67) outnumbers the proportion of infected drug users who were vaccinated (33.33) by twice as much. Once again, it appears that the covid91 vaccine is doing its job for the drug users. 
   
 ## Inferential Results
   
@@ -224,7 +224,7 @@ rowPerc(table1)
 colPerc(table1)
 ```  
   
-The first table above shows that the proportion of LGBTQ study participants who received the covid91 vaccine and got infected with the virus - 7.97 - is more than twice the amount of the LQBTQ study participants who received the placebo and got infected with the virus - 3.36. The second table shows similar information; 70.69% of vaccinated LGBTQ participants came down with the virus as opposed to 29.31% of LGBTQ participants who took the placebo. Once more, we can see that the covid91 vaccine is not that effective in the LGBTQ subgroup.
+The first table above shows that the proportion of LGBTQ study participants who received the covid91 vaccine and got infected with the virus - 7.97 - is more than twice the amount of the LGBTQ study participants who received the placebo and got infected with the virus - 3.36. The second table shows similar information; 70.69% of vaccinated LGBTQ participants came down with the virus as opposed to the 29.31% of LGBTQ participants who took the placebo and caught the virus. Once more, we can see that the covid91 vaccine is not that effective in the LGBTQ subgroup.
   
 ## Inferential Results
   
@@ -244,7 +244,7 @@ So, based on these values, we can reject the null hypothesis in favor of the alt
   
 ## Conclusion
   
-Because our p-values for the male subgroup are too small to show a significant chance that we will get the same results just received if the null hypothesis is true, we reject it in favor of the alternative: the covid91 vaccine is not effective in the LGTBQ community.
+Because our p-values for the LGBTQ subgroup are too small to show a significant chance that we will get the same results just received if the null hypothesis is true, we reject it in favor of the alternative: the covid91 vaccine is not effective in the LGTBQ community.
   
 The covid91 vaccine is clearly not effective in this subgroup. I would not recommend people who identify as LGBTQ to take this vaccine.
   
