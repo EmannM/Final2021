@@ -193,3 +193,58 @@ Because our p-values for the drug user subgroup are too small to show a signific
   
 The covid91 vaccine is clearly effective in this subgroup. I would recommend drug users to take this vaccine.  
   
+# The LGBTQ Community  
+  
+```{r}
+LGBTQ <- subset(FinalData, LGBTQ == "gay")
+``` 
+  
+## Introduction
+  
+$H_0$ The covid91 vaccine is effective in the LGBTQ community.  
+$H_A$ The covid91 vaccine is not effective in the LGBTQ community.  
+  
+## Descriptive results
+  
+### Graphical Descriptive Results
+  
+```{r}
+barchartGC(~infected + treatment, data=LGBTQ)
+barchartGC(~infected + treatment, data=LGBTQ, type="percent")
+```  
+  
+The bar chart above shows that, out of all of the people involved in the study who identify as LGBTQ and became infected with covid, almost 70% had taken the covid91 vaccine and about 30% had taken the placebo. That means the group who got sick after taking the vaccine is much more than twice the size of the group who got sick after taking the placebo! We are starting to see some evidence that this vaccine may not be the best choice for the LGBTQ community.   
+  
+### Numerical Descriptive Results
+  
+```{r}
+table1 <- xtabs(~treatment + infected, data=LGBTQ)
+table2 <- xtabs(~infected + treatment,data=LGBTQ)
+rowPerc(table1)
+colPerc(table1)
+```  
+  
+The first table above shows that the proportion of LGBTQ study participants who received the covid91 vaccine and got infected with the virus - 7.97 - is more than twice the amount of the LQBTQ study participants who received the placebo and got infected with the virus - 3.36. The second table shows similar information; 70.69% of vaccinated LGBTQ participants came down with the virus as opposed to 29.31% of LGBTQ participants who took the placebo. Once more, we can see that the covid91 vaccine is not that effective in the LGBTQ subgroup.
+  
+## Inferential Results
+  
+```{r}
+chisq.test(table1)
+chisqtestGC(table1)
+fisher.test(table1)
+fisher.test(table2)
+```
+  
+$H_0$ The covid91 vaccine is effective in the LGBTQ community.  
+$H_A$ The covid91 vaccine is not effective in the LGBTQ community.  
+  
+The Chi-squared test above displays a p-value of 0.0000105 while Fisher's Exact Test displays a p-value of 0.000005741. Both of these values indicate some sort of significance. They, both representing the chance that we will get the same results just received if the null hypothesis is true, are very small values.
+  
+So, based on these values, we can reject the null hypothesis in favor of the alternative: the covid91 vaccine is not effective in the LGBTQ community.
+  
+## Conclusion
+  
+Because our p-values for the male subgroup are too small to show a significant chance that we will get the same results just received if the null hypothesis is true, we reject it in favor of the alternative: the covid91 vaccine is not effective in males.
+  
+The covid91 vaccine is clearly not effective in this subgroup. I would not recommend males to take this vaccine.
+  
